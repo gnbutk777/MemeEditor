@@ -4,6 +4,7 @@ import routes from './routesConfig';
 
 const EditMeme = ({navigation, route}) => {
   const {navigate} = navigation;
+  const photo = route.params.photo.uri;
 
   const navigateToEditMeme = () => {
     navigate(routes.share.name);

@@ -1,30 +1,11 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
-import routes from './routesConfig';
+import PhotosList from '../components/PhotosList';
+import useSelectImage from '../hooks/useSelectImage';
 
-const SelectImage = ({navigation, route}) => {
-  const {navigate} = navigation;
+const SelectImage = ({navigation}) => {
+  const {photos} = useSelectImage();
 
-  const navigateToEditMeme = () => {
-    navigate(routes.editMeme.name);
-  };
-
-  return (
-    <View style={styles.view}>
-      <Text>{route.name}</Text>
-      <TouchableOpacity
-        onPress={navigateToEditMeme}
-        style={{width: 100, height: 100, backgroundColor: 'green'}}
-      />
-    </View>
-  );
+  return <PhotosList navigation={navigation} photos={photos} />;
 };
-
-const styles = StyleSheet.create({
-  view: {
-    backgroundColor: 'blue',
-    flex: 1,
-  },
-});
 
 export default SelectImage;
